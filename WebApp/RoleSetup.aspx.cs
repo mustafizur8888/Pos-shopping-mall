@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using DAL;
 
 namespace WebApp
@@ -30,8 +25,7 @@ namespace WebApp
             {
                 string roleName = txtRoleName.Text;
 
-                string query = @"INSERT INTO [dbo].[tbl_Role]
-           ([RoleName])VALUES('" + roleName + "')";
+                string query = @"INSERT INTO [dbo].[tbl_Role]([RoleName])VALUES('" + roleName + "')";
                 int count = _db.ExecuteNonQuery(query);
                 if (count > 0)
                 {
@@ -73,6 +67,8 @@ namespace WebApp
             {
                 msg += "Role Name is empty" + "<br>";
             }
+
+
             if (!string.IsNullOrWhiteSpace(msg))
             {
                 ShowErrorMsg(msg);
