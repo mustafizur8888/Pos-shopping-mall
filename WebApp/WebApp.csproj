@@ -65,6 +65,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CategorySetup.aspx" />
     <Content Include="packages.config" />
     <Content Include="Site.Master" />
     <Content Include="style\bootstrap.css.map" />
@@ -93,6 +94,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategorySetup.aspx.cs">
+      <DependentUpon>CategorySetup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CategorySetup.aspx.designer.cs">
+      <DependentUpon>CategorySetup.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

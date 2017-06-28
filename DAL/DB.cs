@@ -39,7 +39,7 @@ namespace DAL
         private DataSet GetDataset(string commandText, List<SqlParameter> parameters)
         {
 
-            DataSet ds=new DataSet();
+            DataSet ds = new DataSet();
             using (SqlConnection connection = new SqlConnection(_con))
             {
                 using (SqlCommand command = new SqlCommand())
@@ -47,7 +47,7 @@ namespace DAL
                     command.Connection = connection;
                     command.CommandText = commandText;
 
-                 
+
                     if (parameters.Any())
                     {
                         foreach (SqlParameter sqlParameter in parameters)
@@ -61,8 +61,8 @@ namespace DAL
                         connection.Open();
                         SqlDataAdapter adapter = new SqlDataAdapter(command);
                         adapter.Fill(ds);
-                        
-                      
+
+
                     }
                     catch (Exception e)
                     {
@@ -88,8 +88,9 @@ namespace DAL
                     {
                         foreach (SqlParameter sqlParameter in parameters)
                         {
-                            command.Parameters.Add(sqlParameter);
+                            command.Parameters.AddWithValue(sqlParameter.ParameterName, sqlParameter.Value);
                         }
+                        command.CommandType=CommandType.StoredProcedure;
                     }
 
                     try
@@ -108,6 +109,6 @@ namespace DAL
             return result;
         }
 
-      
+
     }
 }
