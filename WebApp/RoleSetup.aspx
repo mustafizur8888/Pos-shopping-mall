@@ -37,7 +37,7 @@
 
                 </div>
             </div>
-            <br/>
+            <br />
             <div class="row">
                 <div class="col-md-8 col-lg-8 col-sm-12">
                     <asp:GridView ID="grdRole" runat="server" CssClass="table table-striped table-hover" AutoGenerateColumns="False" GridLines="None">
@@ -45,10 +45,20 @@
                             <asp:BoundField DataField="Id" HeaderText="ID" />
                             <asp:BoundField DataField="RoleName" HeaderText="Role Name" />
                             <asp:BoundField DataField="UserName" HeaderText="Created BY" />
+                            <asp:TemplateField HeaderText="Action">
+                                <ItemTemplate>
+                                    <asp:HiddenField runat="server" ID="hidRoleId" Value='<%# Bind("Id") %>'/>
+                                    <asp:HiddenField runat="server" ID="hidRoleName" Value='<%# Bind("RoleName") %>'/>
+                                    <div class="btn-group btn-group-sm">
+                                        <asp:Button runat="server" CssClass="btn btn-info btn-sm " Text="Edit" ID="btnEdit" OnClick="btnEdit_OnClick"/>
+                                        <asp:Button runat="server" CssClass="btn btn-warning  btn-sm" Text="Delete" ID="btnDelete" OnClick="btnDelete_OnClick"/>
+                                    </div>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                         </Columns>
                     </asp:GridView>
                 </div>
-
+                <asp:HiddenField runat="server" ID="hidRoleID"/>
             </div>
         </div>
 
