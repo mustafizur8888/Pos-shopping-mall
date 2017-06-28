@@ -25,7 +25,7 @@ namespace WebApp
             {
                 string roleName = txtRoleName.Text;
 
-                string query = @"INSERT INTO [dbo].[tbl_Role]([RoleName])VALUES('" + roleName + "')";
+                string query = @"INSERT INTO [dbo].[tbl_Role]([RoleName],[CreatedBy])VALUES('" + roleName + "','" + Session["userId"] + "')";
                 int count = _db.ExecuteNonQuery(query);
                 if (count > 0)
                 {
@@ -45,7 +45,7 @@ namespace WebApp
 
         private void GetRole()
         {
-            string query = @"Select * from [dbo].[tbl_Role]";
+            string query = @"  Select R.Id,R.RoleName,U.UserName from [dbo].[tbl_Role] R  inner join [dbo].[tbl_User] U on   R.id = R.createdBy";
             DataSet dataSet = null;
             dataSet = _db.GetDataSet(query);
             grdRole.DataSource = dataSet;

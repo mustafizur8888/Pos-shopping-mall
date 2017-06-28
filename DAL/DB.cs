@@ -13,7 +13,7 @@ namespace DAL
 
         public Db()
         {
-            _con = ConfigurationManager.ConnectionStrings["PosDb"].ConnectionString;
+            _con = ConfigurationManager.ConnectionStrings["Con"].ConnectionString;
         }
         public int ExecuteNonQuery(string query)
         {
